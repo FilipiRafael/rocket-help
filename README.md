@@ -8,7 +8,8 @@ Conforme vou adquirindo novas habilidades, irei atualizando o projeto em novas v
 
 ## 🚀 Tecnologias utilizadas
 - React Native
-
+- Native Base
+- Firebase
 ##
 <div style="display: inline-block">
     <img src="./src/images/screenshot1.png" alt="App Screenshot 1">
