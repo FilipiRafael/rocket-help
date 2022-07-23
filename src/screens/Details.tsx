@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRoute } from '@react-navigation/native';
 import { VStack, Text } from 'native-base';
 import { Header } from '../components/Header';

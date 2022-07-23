@@ -1,3 +1,4 @@
+import React from 'react';
 import { VStack } from 'native-base';
 import { Header } from '../components/Header';
 import { Input } from '../components/Input';

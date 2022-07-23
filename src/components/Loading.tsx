@@ -1,3 +1,4 @@
+import React from 'react';
 import { Center, Spinner } from 'native-base';
 
 export function Loading() {

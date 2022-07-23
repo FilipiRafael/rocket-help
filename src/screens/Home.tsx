@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { VStack, HStack, IconButton, useTheme, Text, Heading, FlatList, Center } from 'native-base';
 import { SignOut } from 'phosphor-react-native';
