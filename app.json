@@ -11,11 +11,13 @@
     ],
     "android": {
       "package": "com.rockethelp",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 1
     },
     "ios": {
       "bundleIdentifier": "com.rockethelp",
-      "googleServicesFile": "./GoogleService-info.plist"
+      "googleServicesFile": "./GoogleService-info.plist",
+      "buildNumber": "1.0.0"
     }
   }
 }
