@@ -1,6 +1,7 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { VStack, HStack, IconButton, useTheme, Text, Heading, FlatList, Center } from 'native-base';
+import firestore from '@react-native-firebase/firestore';
 import { SignOut } from 'phosphor-react-native';
 import { ChatTeardropText } from 'phosphor-react-native';
 import Logo from '../images/logo_secondary.svg';
@@ -10,16 +11,14 @@ import { Button } from '../components/Button';
 import { useNavigation } from '@react-navigation/native';
 import auth from '@react-native-firebase/auth';
 import { Alert } from 'react-native';
+import { dateFormat } from '../utils/firestoreDateFormat';
+import { Loading } from '../components/Loading';
 
 export function Home() {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { colors } = useTheme();
   const [statusSelected, setStatusSelected] = useState<'open' | 'closed'>('open');
-  const [orders, setOrders] = useState<OrderProps[]>([{
-    id: '999',
-    patrimony: '3848527',
-    status: 'open',
-    when: '10/12/2022 às 20:30'
-  }]);
+  const [orders, setOrders] = useState<OrderProps[]>([]);
 
   const navigation = useNavigation();
 
@@ -39,6 +38,31 @@ export function Home() {
       return Alert.alert('Sair', 'Não foi possível sair.');
     });
   }
+
+  useEffect(() => {
+    setIsLoading(true);
+    const subscriber = firestore()
+    .collection('orders')
+    .where('status', '==', statusSelected)
+    .onSnapshot(snapshot => {
+      const data = snapshot.docs.map(doc => {
+        const { patrimony, description, status, created_at } = doc.data();
+
+        return {
+          id: doc.id,
+          patrimony,
+          description,
+          status,
+          when: dateFormat(created_at)
+        }
+      })
+
+      setOrders(data);
+      setIsLoading(false);
+    });
+
+    return subscriber;
+  }, [statusSelected])
 
   return (
     <VStack flex={1} paddingBottom={6} bgColor="gray.700">
@@ -83,6 +107,7 @@ export function Home() {
           />
         </HStack>
 
+        {isLoading ? <Loading /> : 
         <FlatList
           data={orders}
           keyExtractor={item => item.id}
@@ -97,7 +122,7 @@ export function Home() {
               </Text>
             </Center>
           )}
-        />
+        />}
         <Button title="Nova Solicitação" onPress={handleNewOrder} />
         </VStack>
     </VStack>
