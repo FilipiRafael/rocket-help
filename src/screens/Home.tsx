@@ -41,7 +41,7 @@ export function Home() {
 
   useEffect(() => {
     setIsLoading(true);
-    const subscriber = firestore()
+    return firestore()
     .collection('orders')
     .where('status', '==', statusSelected)
     .onSnapshot(snapshot => {
@@ -60,8 +60,6 @@ export function Home() {
       setOrders(data);
       setIsLoading(false);
     });
-
-    return subscriber;
   }, [statusSelected])
 
   return (
