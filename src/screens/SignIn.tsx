@@ -30,11 +30,11 @@ export function SignIn() {
       } 
 
       if (error.code === 'auth/user-not-found') {
-        return Alert.alert('Entrar', 'E-mail ou senha inválida.');
+        return Alert.alert('Entrar', 'E-mail ou senha inválido.');
       }
 
       if (error.code === 'auth/wrong-password') {
-        return Alert.alert('Entrar', 'E-mail ou senha inválida.');
+        return Alert.alert('Entrar', 'E-mail ou senha inválido.');
       }
 
       return Alert.alert('Entrar', 'Não foi possível acessar.')
