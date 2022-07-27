@@ -1,5 +1,3 @@
-## 👨🏼‍💻 Página de Registro
-
 ## 🚀 Sobre o Projeto
 A ideia do projeto foi para aplicar, práticar e melhorar minhas habilidades técnicas em desenvolvimento mobile.
 
