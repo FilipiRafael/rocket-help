@@ -10,6 +10,7 @@ Conforme vou adquirindo novas habilidades, irei atualizando o projeto em novas v
 - Firebase
 ##
 <div style="display: inline-block">
+    <img src="./src/images/cover.gif">
     <img src="./src/images/screenshot1.png" alt="App Screenshot 1">
     <img src="./src/images/screenshot2.png" alt="App Screenshot 2">
 </div>
